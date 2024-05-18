@@ -15,7 +15,7 @@ jobs:
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
       - name: Change working Dir
-        working-directory: /home/home
+        working-directory: /usr/bin/
         run: pwd
   display-working-directory-info-windows:
     runs-on: windows-latest
