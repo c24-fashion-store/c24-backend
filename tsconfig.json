@@ -1,0 +1,18 @@
+// tsconfig.json
+{
+    
+    "compilerOptions": {
+        "target": "es6",
+        "allowJs": true,
+        "module": "commonjs",
+        "outDir": "./dist",
+        "strict": true,
+        "esModuleInterop": true
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
