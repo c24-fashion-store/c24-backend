@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: log ENV VAR
         run: echo $GITHUB_REF
+      - name: Set env var
+        run: |
+          echo "NEW_ENV_VAR=$(date)" >> "$GITHUB_ENV"  
+          echo "JOB_LEVEL_ENV=$RANDOM" >> "$GITHUB_PATH"
       - name: log context
         run: echo '${{ github.ref }}'
       - name: Log custom ENV vars
@@ -23,3 +27,4 @@ jobs:
           echo $STEP_LEVEL_ENV
           echo $WF_LEVEL_ENV
           echo $JOB_LEVEL_ENV
+          echo $NEW_ENV_VAR
