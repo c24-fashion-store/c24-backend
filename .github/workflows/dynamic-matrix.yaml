@@ -4,7 +4,11 @@ on:
     inputs:
       os:
         description: Operating systems
-        default: "windows-latest, ubuntu-latest"
+        default: "windows-latest,ubuntu-latest"
+        type: string
+      node-version:
+        description: Node version
+        default: "14,15,16"
         type: string
 jobs:
   prepare-matrix:
