@@ -73,4 +73,4 @@ web_modules/
 .vscode-test
 
 # Credentials
-.googleCredentials.json
+googleCredentials.json
