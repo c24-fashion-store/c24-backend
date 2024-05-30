@@ -1,15 +1,33 @@
 name: Matrix
 on: [push]
 
+# [os: ubuntu-latest, node-version: 14, is-ubuntu: true]
+# [os: ubuntu-latest, node-version: 15, is-ubuntu: true]
+# [os: ubuntu-latest, node-version: 16, is-ubuntu: true]
+# [os: windows-latest, node-version: 14]
+# [os: windows-latest, node-version: 15]
+# [os: windows-latest, node-version: 16]
+# [os: macos-latest, node-version: 15]
+
 jobs:
   node-matrix:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
         node-version: [14, 15, 16]
+        includes:
+            - os: ubuntu-latest
+              is-ubuntu: true
+            - os: macos-latest
+              node-version: 15
+        excludes:
+            - os: ubuntu-latest
+              node-version: 14
+      # max-parallel: 3
     runs-on: ${{ matrix.os }}
     steps:
       - run: node -v
+      - run: echo '${{ toJSON(matrix)}}'
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version}}
