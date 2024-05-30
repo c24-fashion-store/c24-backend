@@ -16,16 +16,20 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         node-version: [14, 15, 16]
         includes:
-            - os: ubuntu-latest
-              is-ubuntu: true
-            - os: macos-latest
-              node-version: 15
+          - os: ubuntu-latest
+            node-version: 16
+            experimental: true
+          - os: macos-latest
+            node-version: 15
         excludes:
-            - os: ubuntu-latest
-              node-version: 14
+          - os: ubuntu-latest
+            node-version: 14
+      fail-fast: true
       # max-parallel: 3
     runs-on: ${{ matrix.os }}
     steps:
+      - if: matrix.experimental == true
+        run: exit 1
       - run: node -v
       - run: echo '${{ toJSON(matrix)}}'
       - uses: actions/setup-node@v3
